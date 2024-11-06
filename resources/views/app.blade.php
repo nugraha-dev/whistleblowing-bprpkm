@@ -59,7 +59,7 @@
 
             <div class="w-full md:w-7/12 p-6 bg-white shadow-lg rounded-lg">
                 <h2 class="text-2xl font-semibold text-center mb-6">Formulir Pelaporan</h2>
-                <form action="{{ route('send') }}" method="post" class="space-y-4 max-w-2xl mx-auto">
+                <form action="{{ route('send') }}" method="post" enctype="multipart/form-data" class="space-y-4 max-w-2xl mx-auto">
                     @csrf
                     <!-- Name (Optional) -->
                     <div class="grid md:grid-cols-2 gap-4 xl:gap-8">
