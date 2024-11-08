@@ -31,6 +31,10 @@ class WhistleblowingSystem extends Mailable
     {
         return new Envelope(
             subject: 'Whistleblowing System',
+            cc: [
+                'primakredit.bpr@gmail.com',
+                'gulam.nugraha@gmail.com',
+            ]
         );
     }
 

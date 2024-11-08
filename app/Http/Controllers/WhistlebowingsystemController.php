@@ -17,8 +17,10 @@ class WhistlebowingsystemController extends Controller
             'pic' => 'required|string',
             'cabang' => 'required|string',
             'perihal' => 'required|string',
-            'attachment' => 'nullable|file|max:5120' // Optional file upload
+            // 'attachment' => 'nullable|file|max:5120' // Optional file upload
+            'attachment' => 'required|file|max:15360', // Optional file upload
         ]);
+
 
         $details = [
             'pic' => $request->pic,
@@ -62,7 +64,7 @@ class WhistlebowingsystemController extends Controller
             );
 
 
-            Mail::to('gulam@resolusiweb.com')->send(new WhistleblowingSystem($details));
+            // Mail::to('pkm_dpk@yahoo.com')->send(new WhistleblowingSystem($details));
             return redirect()->back()->with('success', "Berhasil mengirim laporan");
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors($th->getMessage());

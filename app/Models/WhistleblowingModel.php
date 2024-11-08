@@ -15,5 +15,6 @@ class WhistleblowingModel extends Model
         'pic',
         'cabang',
         'perihal',
+        'file',
     ];
 }

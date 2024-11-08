@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WhistlebowingsystemController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +20,20 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::post('send/post', [WhistlebowingsystemController::class, 'sendWhistleblowingEmail'])->name('send');
+Route::post('/whistleblowing', [WhistlebowingsystemController::class, 'sendWhistleblowingEmail'])->middleware('recaptcha')->name('send');
+
+
+Route::group(['midleware' => ['auth', 'verified']], function () {
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/whistleblowing/{id}', [DashboardController::class, 'show'])->name('whistleblowing.show');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('pic')->nullable();
             $table->string('cabang')->nullable();
-            $table->string('perihal')->nullable();
+            $table->text('perihal')->nullable();
+            $table->text('file')->nullable();
             $table->timestamps();
         });
     }

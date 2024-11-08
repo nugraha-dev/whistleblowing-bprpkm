@@ -59,7 +59,8 @@
 
             <div class="w-full md:w-7/12 p-6 bg-white shadow-lg rounded-lg">
                 <h2 class="text-2xl font-semibold text-center mb-6">Formulir Pelaporan</h2>
-                <form action="{{ route('send') }}" method="post" enctype="multipart/form-data" class="space-y-4 max-w-2xl mx-auto">
+                <form action="{{ route('send') }}" method="post" enctype="multipart/form-data"
+                    class="space-y-4 max-w-2xl mx-auto">
                     @csrf
                     <!-- Name (Optional) -->
                     <div class="grid md:grid-cols-2 gap-4 xl:gap-8">
@@ -83,7 +84,8 @@
                     <div class="grid gap-4 xl:gap-4">
 
                         <div class="">
-                            <label for="email" class="mb-1 md:mb-2 block text-gray-700 font-medium">File</label>
+                            <label for="email" class="mb-1 md:mb-2 block text-gray-700 font-medium">File <sup><small
+                                        class="text-red-700">(optional - max 15mb)</small></sup></label>
                             <input name="attachment" type="file" id="file"
                                 class="w-full p-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Email Anda">
@@ -96,6 +98,9 @@
                                 class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Deskripsikan detail pelanggaran yang ingin Anda laporkan"></textarea>
                         </div>
+
+                        <!-- reCAPTCHA widget -->
+                        <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}"> </div>
 
                         <!-- Submit Button -->
                         <div class="text-center">
@@ -115,6 +120,8 @@
                 href="https://www.bprpkm.co.id/">BPRPKM.</a> All rights
             reserved.</p>
     </footer>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </body>
 
